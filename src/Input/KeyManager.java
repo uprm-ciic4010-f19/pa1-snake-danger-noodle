@@ -12,12 +12,14 @@ public class KeyManager implements KeyListener {
 
 	private boolean[] keys,justPressed,cantPress;
 	public boolean up=false, down=false, left=false, right=false;
-	public boolean pbutt=false;
+	public boolean pbutt=false, addPiece = false;
+	public boolean speedUp=false, speedDown = false;
+	
 
 
 	public KeyManager(){
 
-		keys = new boolean[256];
+		keys = new boolean[600];
 		justPressed = new boolean[keys.length];
 		cantPress = new boolean[keys.length];
 
@@ -41,6 +43,11 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_S];
 		left = keys[KeyEvent.VK_A];
 		right = keys[KeyEvent.VK_D];
+		
+		addPiece = keys[KeyEvent.VK_N];
+		
+		speedUp = keys[KeyEvent.VK_EQUALS]; //it's is supposed to be '+' but it doesn't work
+		speedDown = keys[KeyEvent.VK_MINUS];
 
 		pbutt = keys[KeyEvent.VK_ESCAPE];
 

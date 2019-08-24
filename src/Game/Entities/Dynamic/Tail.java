@@ -1,5 +1,8 @@
 package Game.Entities.Dynamic;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import Main.Handler;
 
 /**
@@ -7,6 +10,7 @@ import Main.Handler;
  */
 public class Tail {
     public int x,y;
+    
     public Tail(int x, int y,Handler handler){
         this.x=x;
         this.y=y;

@@ -19,7 +19,7 @@ public class KeyManager implements KeyListener {
 
 	public KeyManager(){
 
-		keys = new boolean[600];
+		keys = new boolean[256];
 		justPressed = new boolean[keys.length];
 		cantPress = new boolean[keys.length];
 
@@ -79,10 +79,10 @@ public class KeyManager implements KeyListener {
 
 	}
 
-	public boolean keyCantPress(int keyCode){
-		if(keyCode < 0 || keyCode >= keys.length)
-			return cantPress[keyCode]= true;
-		return false;
-	}
+//	public boolean keyCantPress(int keyCode){
+//		if(keyCode < 0 || keyCode >= keys.length)
+//			return cantPress[keyCode]= true;
+//		    return false;
+//	}
 
 }

@@ -1,7 +1,5 @@
 package Game.Entities.Dynamic;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
 import Main.Handler;
 

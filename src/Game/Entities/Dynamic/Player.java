@@ -46,8 +46,7 @@ public class Player {
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
 			direction="Up";
-			if (handler.getKeyManager().keyCantPress(KeyEvent.VK_DOWN))
-				return;
+			//handler.getKeyManager().keyCantPress(KeyEvent.VK_DOWN) = false;
 			
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
 			direction="Down";
@@ -69,6 +68,10 @@ public class Player {
 		{
 			speed = speed + 0.5;
 		}
+//		if (handler.getWorld().body.contains(new Tail(xCoord,yCoord,handler)))
+//		{
+//			kill();
+//		}
 
 	}
 
@@ -120,6 +123,7 @@ public class Player {
 		}
 
 	}
+	
 
 	public void render(Graphics g,Boolean[][] playeLocation){
 		Random r = new Random();
@@ -129,9 +133,8 @@ public class Player {
 
 				if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
 					if(playeLocation[i][j]) g.setColor(Color.GREEN);
-					if(handler.getWorld().appleLocation[i][j]) {
-						g.setColor(Color.RED);
-					}
+					if(handler.getWorld().appleLocation[i][j]) g.setColor(Color.RED);
+					
 					g.fillRect((i*handler.getWorld().GridPixelsize),
 							(j*handler.getWorld().GridPixelsize),
 							handler.getWorld().GridPixelsize,
@@ -151,6 +154,8 @@ public class Player {
 			else;
 			
 			score = score + Math.sqrt(2.0*score + 1.0);
+			
+			
 			System.out.println(score);
 			lenght++;
 			Tail tail= null;

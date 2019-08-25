@@ -16,6 +16,8 @@ public class Player {
 	private Handler handler;
 	
 	public double speed = 5.0;
+	
+	public double score = 0;
 
 	public int xCoord;
 	public int yCoord;
@@ -44,6 +46,9 @@ public class Player {
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
 			direction="Up";
+			if (handler.getKeyManager().keyCantPress(KeyEvent.VK_DOWN))
+				return;
+			
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
 			direction="Down";
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
@@ -144,7 +149,9 @@ public class Player {
 			if (speed > 0)
 				speed = speed - 0.5; //
 			else;
-			System.out.println(speed);
+			
+			score = score + Math.sqrt(2.0*score + 1.0);
+			System.out.println(score);
 			lenght++;
 			Tail tail= null;
 			handler.getWorld().appleLocation[xCoord][yCoord]=false;

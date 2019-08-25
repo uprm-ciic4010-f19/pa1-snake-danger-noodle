@@ -14,7 +14,7 @@ public class KeyManager implements KeyListener {
 	public boolean up=false, down=false, left=false, right=false;
 	public boolean pbutt=false, addPiece = false;
 	public boolean speedUp=false, speedDown = false;
-	
+
 
 
 	public KeyManager(){
@@ -43,9 +43,9 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_S];
 		left = keys[KeyEvent.VK_A];
 		right = keys[KeyEvent.VK_D];
-		
+
 		addPiece = keys[KeyEvent.VK_N];
-		
+
 		speedUp = keys[KeyEvent.VK_EQUALS]; //it's is supposed to be '+' but it doesn't work
 		speedDown = keys[KeyEvent.VK_MINUS];
 
@@ -76,6 +76,13 @@ public class KeyManager implements KeyListener {
 		if(keyCode < 0 || keyCode >= keys.length)
 			return false;
 		return justPressed[keyCode];
+
+	}
+
+	public boolean keyCantPress(int keyCode){
+		if(keyCode < 0 || keyCode >= keys.length)
+			return cantPress[keyCode]= true;
+		return false;
 	}
 
 }

@@ -1,6 +1,5 @@
 package Game.Entities.Static;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 import Main.Handler;
@@ -19,7 +18,10 @@ public class Apple {
         this.handler=handler;
         this.xCoord=x;
         this.yCoord=y;
-
+    }
+    public void isGood() 
+    {
+    	
     }
 
 

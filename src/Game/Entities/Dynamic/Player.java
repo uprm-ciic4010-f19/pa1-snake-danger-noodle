@@ -1,11 +1,13 @@
 package Game.Entities.Dynamic;
 
 import Main.*;
-import Game.GameStates.PauseState;
+import Game.GameStates.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+
+import Game.GameStates.State;
 
 /**
  * Created by AlexVR on 7/2/2018.
@@ -41,7 +43,7 @@ public class Player {
 		yCoord = 0;
 		moveCounter = 0;
 
-		direction= "Right";
+		direction= " "; //it was "Right"
 		justAte = false;
 		lenght= 1; 
 
@@ -56,7 +58,7 @@ public class Player {
 			moveCounter=0;
 		}
 		//all moves when snake has more then one segment and prevents backtracking
-		if(lenght > 1)
+		if(lenght >= 1)
 		{
 			if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP) && direction != "Down"){
 				direction="Up";
@@ -71,21 +73,25 @@ public class Player {
 				direction="Right";
 			}
 
-		}else //moves allowed when the snake has just on segment
-			{
-			if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
-				direction="Up";
-
-			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
-				direction="Down";
-
-			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
-				direction="Left";
-
-			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) ){
-				direction="Right";
-			}
-			}
+		}
+		
+//		else //moves allowed when the snake has just on segment
+//			{
+//			if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
+//				direction="Up";
+//
+//			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
+//				direction="Down";
+//
+//			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
+//				direction="Left";
+//
+//			}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) ){
+//				direction="Right";
+//			}
+//			}
+		
+		
 		//when N key is clicked...
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)){
 			if (handler.getWorld().body != null)
@@ -112,7 +118,8 @@ public class Player {
 		
 		else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE))
 		{
-			
+			PauseState pauseState = new PauseState(handler);
+			State.setState(pauseState);
 		}
 		else
 		{
@@ -226,10 +233,12 @@ public class Player {
 
 		score = score + Math.sqrt(2.0*score + 1.0);
 		
-//		Font font = new Font(String.valueOf(score), Font.PLAIN, 10);
-//		
+		//Font font = new Font(String.valueOf(score), Font.PLAIN, 10);
+		
 //		g.setColor(Color.BLACK);
-//		g.drawString(font.toString(), 300, 300);
+//		g.drawString(String.valueOf(score), 300, 300);
+		
+		
 
 		//System.out.println(score);
 		lenght++;
@@ -341,8 +350,8 @@ public class Player {
 		}
 		handler.getWorld().body.addLast(tail);
 		handler.getWorld().playerLocation[tail.x][tail.y] = false;//truth value was true
-		System.out.println(lenght);
-		System.out.println("apples: " + applesEaten);
+//		System.out.println(lenght);
+//		System.out.println("apples: " + applesEaten);
 		
 	}
 

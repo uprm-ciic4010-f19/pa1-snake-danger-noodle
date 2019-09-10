@@ -1,13 +1,15 @@
 package Game.Entities.Dynamic;
 
-import Main.*;
-import Game.GameStates.*;
+import Game.Entities.Static.*;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import Game.GameStates.PauseState;
 import Game.GameStates.State;
+import Main.Handler;
 
 /**
  * Created by AlexVR on 7/2/2018.
@@ -21,14 +23,14 @@ public class Player {
 	public double speed = 5.0;
 
 	public double score = 0;
-	
-	public int applesEaten = 0;
 
 	public int piece = 0;
 
 	public String tails = " ";
 
 	public Graphics g;
+	
+	public int steps = 0;
 
 	public int xCoord;
 	public int yCoord;
@@ -142,6 +144,8 @@ public class Player {
 	}
 
 	public void checkCollisionAndMove(){
+		
+		steps++;
 		handler.getWorld().playerLocation[xCoord][yCoord]=false;
 		int x = xCoord;
 		int y = yCoord;
@@ -210,13 +214,32 @@ public class Player {
 						//						}
 						Color rColor = new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
 						g.setColor(rColor);
+						g.fillRect((i*handler.getWorld().GridPixelsize),
+								(j*handler.getWorld().GridPixelsize),
+								handler.getWorld().GridPixelsize,
+								handler.getWorld().GridPixelsize);
 					}
-					if(handler.getWorld().appleLocation[i][j]) g.setColor(Color.RED);
+					if(handler.getWorld().appleLocation[i][j]) 
+					{
+						if (steps >= handler.getWidth()) {
+							Color brown = new Color(102,51,0);
+							g.setColor(brown);
+							
+							Apple.isGood = false;
 
-					g.fillRect((i*handler.getWorld().GridPixelsize),
-							(j*handler.getWorld().GridPixelsize),
-							handler.getWorld().GridPixelsize,
-							handler.getWorld().GridPixelsize);
+						}
+						else {
+							g.setColor(Color.RED);
+						Apple.isGood = true;
+						}
+						g.fillOval((i*handler.getWorld().GridPixelsize),
+								(j*handler.getWorld().GridPixelsize),
+								handler.getWorld().GridPixelsize,
+								handler.getWorld().GridPixelsize);
+						//made apples round
+					}
+
+					
 				}
 
 			}
@@ -231,7 +254,15 @@ public class Player {
 			speed = speed - 0.5; //
 		else;
 
+		if(Apple.isGood)
 		score = score + Math.sqrt(2.0*score + 1.0);
+		else {
+			if (score > 0) score = score - Math.sqrt(2.0*score + 1.0);
+			
+			if (score < 0) score = 0;
+			}
+			
+		
 		
 		//Font font = new Font(String.valueOf(score), Font.PLAIN, 10);
 		
@@ -240,15 +271,26 @@ public class Player {
 		
 		
 
-		//System.out.println(score);
-		lenght++;
-		applesEaten++;
+		System.out.println(score);
+		
+		
+		steps = 0;
 		
 		Tail tail= null;
 		handler.getWorld().appleLocation[xCoord][yCoord]=false;
 		handler.getWorld().appleOnBoard=false;
 
-
+		if (!Apple.isGood && lenght > 1) {
+			handler.getWorld().body.removeLast();
+			lenght = lenght - 1;
+		}
+		
+		else if (!Apple.isGood && lenght ==1)
+		{
+			//stays the same or die (don't know yet)
+		}
+		else
+		{
 		switch (direction){
 		case "Left":
 			if( handler.getWorld().body.isEmpty()){
@@ -352,6 +394,9 @@ public class Player {
 		handler.getWorld().playerLocation[tail.x][tail.y] = false;//truth value was true
 //		System.out.println(lenght);
 //		System.out.println("apples: " + applesEaten);
+		
+		lenght++;
+		}
 		
 	}
 

@@ -283,6 +283,7 @@ public class Player {
 		handler.getWorld().appleOnBoard=false;
 
 		if (!Apple.isGood && lenght > 1) {
+			handler.getWorld().playerLocation[handler.getWorld().body.getLast().x][handler.getWorld().body.getLast().y]=false;
 			handler.getWorld().body.removeLast();
 			lenght = lenght - 1;
 		}

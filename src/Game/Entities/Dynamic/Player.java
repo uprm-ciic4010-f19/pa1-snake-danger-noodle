@@ -3,6 +3,7 @@ package Game.Entities.Dynamic;
 import Game.Entities.Static.*;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -240,6 +241,13 @@ public class Player {
 								handler.getWorld().GridPixelsize);
 						//made apples round
 					}
+					g.setColor(Color.WHITE);
+
+					g.setFont(new Font("TimesRoman", Font.PLAIN, 16));
+
+					g.drawString("Score: " + String.valueOf(score), 10,15);
+
+					 
 
 					
 				}

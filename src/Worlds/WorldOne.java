@@ -29,7 +29,7 @@ public class WorldOne extends WorldBase{
         if(!appleOnBoard){
             appleOnBoard=true;
             int appleX = new Random().nextInt(handler.getWorld().GridWidthHeightPixelCount-1);
-            int appley = new Random().nextInt(handler.getWorld().GridWidthHeightPixelCount-1);
+            int appley = new Random().nextInt(handler.getWorld().GridWidthHeightPixelCount-2);
 
             //change coordinates till one is selected in which the player isn't standing
             boolean goodCoordinates=false;

@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import Game.GameStates.GameOverState;
 import Game.GameStates.PauseState;
 import Game.GameStates.State;
 import Main.Handler;
@@ -135,7 +136,8 @@ public class Player {
 				{
 					if ((headX == tailX) && (headY == tailY))
 					{
-						kill();
+						GameOverState gameover = new GameOverState(handler);
+						State.setState(gameover);
 					}
 				}
 

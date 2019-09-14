@@ -12,6 +12,10 @@ import java.awt.*;
 /**
  * Created by AlexVR on 7/1/2018.
  */
+
+/*
+ * Edited by Gabriel Rodriguez ad Christian Robles on 13/09/2019
+ */
 public class MenuState extends State {
 
     private UIManager uiManager;
@@ -41,9 +45,17 @@ public class MenuState extends State {
 
     @Override
     public void render(Graphics g) {
+    	//creates the home screen or menu screen 
         g.setColor(Color.black);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
         g.drawImage(Images.title,0,0-20,handler.getWidth(),handler.getHeight(),null);
+        
+        g.setFont(new Font("Courier",Font.BOLD,60));
+        g.setColor(Color.WHITE);
+        String java = "JAVA";
+        String snake = "SNAKE";
+        g.drawString(java, 220, 80);
+        g.drawString(snake, 210,510);
         uiManager.Render(g);
 
     }

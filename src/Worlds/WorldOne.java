@@ -9,14 +9,18 @@ import java.util.Random;
 /**
  * Created by AlexVR on 7/2/2018.
  */
+
+/*
+ * Edited by Gabriel Rodriguez ad Christian Robles on 13/09/2019
+ */
 public class WorldOne extends WorldBase{
 
     public WorldOne (Handler handler) {
         super(handler);
 
         //has to be a number bigger than 20 and even
-        GridWidthHeightPixelCount = 60;
-        GridPixelsize = (600/GridWidthHeightPixelCount);
+        GridWidthHeightPixelCount = 60; //makes the grid 60x60
+        GridPixelsize = (600/GridWidthHeightPixelCount);// each GridPixel is 10x10
         playerLocation = new Boolean[GridWidthHeightPixelCount][GridWidthHeightPixelCount];
         appleLocation = new Boolean[GridWidthHeightPixelCount][GridWidthHeightPixelCount];
 

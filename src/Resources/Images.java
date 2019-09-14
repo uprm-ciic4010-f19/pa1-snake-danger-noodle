@@ -8,6 +8,10 @@ import java.io.IOException;
 /**
  * Created by AlexVR on 7/1/2018.
  */
+
+/*
+ * Edited by Gabriel Rodriguez ad Christian Robles on 13/09/2019
+ */
 public class Images {
 
 
@@ -28,8 +32,8 @@ public class Images {
         Options = new BufferedImage[2];
 
         try {
-        	gameover = ImageIO.read(getClass().getResourceAsStream("/Sheets/gameover.png"));
-            title = ImageIO.read(getClass().getResourceAsStream("/Sheets/snake.png"));
+        	gameover = ImageIO.read(getClass().getResourceAsStream("/Sheets/bittenpng.png")); //image of game over screen
+            title = ImageIO.read(getClass().getResourceAsStream("/Sheets/snake.png")); // image for the front page
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
             Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
             Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));

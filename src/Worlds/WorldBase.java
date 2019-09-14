@@ -12,6 +12,10 @@ import java.util.LinkedList;
 /**
  * Created by AlexVR on 7/2/2018.
  */
+
+/*
+ * Edited by Gabriel Rodriguez ad Christian Robles on 13/09/2019
+ */
 public abstract class WorldBase {
 
     //How many pixels are from left to right
@@ -52,6 +56,9 @@ public abstract class WorldBase {
     }
 
     public void render(Graphics g){
+    	
+    	//commenting the code remove the grid lines, they could also be
+    	//painted as the same color of the background
 
 //        for (int i = 0; i <= 600; i = i + GridPixelsize) {
 //

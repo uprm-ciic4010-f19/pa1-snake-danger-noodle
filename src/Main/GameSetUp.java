@@ -21,6 +21,8 @@ import java.io.InputStream;
  * Created by AlexVR on 7/1/2018.
  */
 
+
+
 public class GameSetUp implements Runnable {
     private DisplayScreen display;
     private int width, height;

@@ -231,9 +231,9 @@ public class Player {
 					}
 					g.setColor(Color.WHITE); //sets the a color
 
-					g.setFont(new Font("TimesRoman", Font.PLAIN, 16)); //sets a font
+					g.setFont(new Font("Courier", Font.BOLD, 16)); //sets a font
 
-					g.drawString("Score: " + String.valueOf(score), 10,15); // prints the score
+					g.drawString("Score: " + String.valueOf(Math.round(score)), 10,15); // prints the score
 
 					 
 
@@ -279,6 +279,8 @@ public class Player {
 		else if (!Apple.isGood && lenght ==1)
 		{
 			// the snake stays the same
+			GameOverState gameover = new GameOverState(handler);
+			State.setState(gameover);
 		}
 		else
 		{
